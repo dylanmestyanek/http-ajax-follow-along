@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from '../../../axios';
 
 import './FullPost.css';
 
@@ -8,10 +8,12 @@ class FullPost extends Component {
         loadedPost: null
     }
 
-    componentDidUpdate() {
-        if (this.props.id) {
-            if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)){ 
-                axios.get(`/posts/${this.props.id}`)
+    componentDidMount() {
+        const postId = this.props.match.params.postId;
+        console.log(postId)
+        if (postId) {
+            if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== postId)){ 
+                axios.get(`/posts/${postId}`)
                     .then(response => {
                         this.setState({
                             loadedPost: response.data
