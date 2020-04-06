@@ -14,17 +14,16 @@ class Blog extends Component {
                     <nav>
                         <ul>
                             <li><NavLink 
-                                to="/" 
+                                to="/posts" 
                                 exact
-                                >Home</NavLink></li>
+                                >Posts</NavLink></li>
                             <li><NavLink to="new-post">New Post</NavLink></li>
                         </ul>
                     </nav>
                 </header>
                 <Switch>
-                    <Route path="/" exact component={Posts} />
                     <Route path="/new-post" component={NewPost} />
-                    <Route path="/:postId" exact component={FullPost} />
+                    <Route path="/posts" component={Posts} />
                 </Switch>
             </div>
         );
